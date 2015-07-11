@@ -8,7 +8,23 @@ package = {}
 package.cpath = ""
 package.loaded = {}
 package.loadlib = function() error("NotImplemented: package.loadlib") end
-package.path = "?;?.lua;?/init.lua;/lib/?;/lib/?.lua;/lib/?/init.lua;/rom/apis/?;/rom/apis/turtle/?"
+package.path = table.concat({
+    "?",
+    "?.lua",
+    "?/init.lua",
+    "/lib/?",
+    "/lib/?.lua",
+    "/lib/?/init.lua",
+    "/rom/apis/?",
+    "/rom/apis/?.lua",
+    "/rom/apis/?/init.lua",
+    "/rom/apis/turtle/?",
+    "/rom/apis/turtle/?.lua",
+    "/rom/apis/turtle/?/init.lua",
+    "/rom/apis/command/?",
+    "/rom/apis/command/?.lua",
+    "/rom/apis/command/?/init.lua",
+}, ";")
 package.preload = {}
 package.seeall = function(module) error("NotImplemented: package.seeall") end
 module = function(m) error("NotImplemented: module") end
