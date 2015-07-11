@@ -3,12 +3,12 @@
 -- License: MIT - http://opensource.org/licenses/MIT
 -- Filename: require.lua
 
-package = {}
+_G.package = {}
 
-package.cpath = ""
-package.loaded = {}
-package.loadlib = function() error("NotImplemented: package.loadlib") end
-package.path = table.concat({
+_G.package.cpath = ""
+_G.package.loaded = {}
+_G.package.loadlib = function() error("NotImplemented: package.loadlib") end
+_G.package.path = table.concat({
     "?",
     "?.lua",
     "?/init.lua",
@@ -25,9 +25,9 @@ package.path = table.concat({
     "/rom/apis/command/?.lua",
     "/rom/apis/command/?/init.lua",
 }, ";")
-package.preload = {}
-package.seeall = function(module) error("NotImplemented: package.seeall") end
-module = function(m) error("NotImplemented: module") end
+_G.package.preload = {}
+_G.package.seeall = function(module) error("NotImplemented: package.seeall") end
+_G.module = function(m) error("NotImplemented: module") end
 
 local _package_path_loader = function(name)
     
@@ -64,7 +64,7 @@ local _package_path_loader = function(name)
     end
 end
 
-package.loaders = {
+_G.package.loaders = {
     function(name)
         if package.preload[name] then
             return package.preload[name]
@@ -92,7 +92,7 @@ package.loaders = {
     end
 }
 
-function require(name)
+_G.require = function(name)
     if package.loaded[name] then
         return package.loaded[name]
     end
