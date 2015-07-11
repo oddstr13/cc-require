@@ -1,3 +1,8 @@
+-- -*- coding: utf8 -*-
+-- Copyright (c) 2014 Odd Straaboe <oddstr13 at openshell dot no>
+-- License: MIT - http://opensource.org/licenses/MIT
+-- Filename: require.lua
+
 package = {}
 
 package.cpath = ""
