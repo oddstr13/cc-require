@@ -2,18 +2,20 @@
 NAME="cc-require"
 
 if [ -z "${VERSION}" ]; then
-    VERSION=$(printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)")
+    VERSION=$(printf "%s.%s.%s" "$(tail -n1 .hgtags | cut -d' ' -f2)" "$(hg identify -n)" "$(hg identify -i)")
 fi
 
 if [ -z "${BUILDDIR}" ]; then
     BUILDDIR=$(dirname $(realpath $0))/build
 fi
 
+BRANCH="$(hg identify -b)"
+
 # Clean up
 rm -rv "${BUILDDIR}"
 
 
-OUTPUT="${BUILDDIR}/${NAME}_${VERSION}.zip"
+OUTPUT="${BUILDDIR}/${NAME}_${BRANCH}_${VERSION}.zip"
 
 # Build
 if [ -n "$(which 7z)" ]; then
