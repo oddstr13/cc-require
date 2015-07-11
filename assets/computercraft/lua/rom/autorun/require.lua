@@ -55,6 +55,9 @@ local _package_path_loader = function(name)
             end
             
             local api = {}
+            if type(err) == "table" then
+              api = err
+            end
             for k,v in pairs( apienv ) do
                 api[k] = v
             end
