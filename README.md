@@ -12,7 +12,7 @@ Examples
 ### Standards compatible:
 ```lua
 local api = {}
-api.hello = function(what)
+function api.hello(what)
     print("Hello, " .. what .. "!")
 end
 
@@ -34,10 +34,20 @@ environment of the API file is put into `_G[api_filename]`.
 This implementation of require allows you to import either type API.
 It will however not place it in the global environment.
 ```lua
-local api = require("/lib/api")
+-- API file: /lib/api.lua
+local api = require("api")
 
 api.hello("World")
+
 ```
+```lua
+-- API file: /lib/test/api.lua
+local api = require("test.api")
+
+api.hello("ComputerCraft")
+```
+
+The search paths, where require looks for the API, can be found [at the top of require.lua][link:cc-require require.lua]
 
 
 Contribute
@@ -54,3 +64,5 @@ Contribute
 [link:cc-require issues]: <https://bitbucket.org/openshell/cc-require/issues>
 [link:cc-require repo]: <https://bitbucket.org/openshell/cc-require>
 [link:cc-require commits]: <https://bitbucket.org/openshell/cc-require/commits/all>
+
+[link:cc-require require.lua]: <https://bitbucket.org/openshell/cc-require/src/default/assets/computercraft/lua/rom/autorun/require.lua?at=default>
