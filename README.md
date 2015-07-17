@@ -57,6 +57,12 @@ Contribute
  * [Full list of contributors can be found here][link:cc-require commits]
 
 
+Download and installation
+-------------------------
+Resource pack can be downloaded from the [Bitbucket download section][link:cc-require downloads].
+Put the downloaded zip into the directory `resourcepacks/`, innside your minecraft directory, creating it if needed.
+
+
 
 [link:5.1 PIL]: <http://www.lua.org/manual/5.1/manual.html>
 [link:5.1 require]: <http://www.lua.org/manual/5.1/manual.html#pdf-require>
@@ -64,5 +70,6 @@ Contribute
 [link:cc-require issues]: <https://bitbucket.org/openshell/cc-require/issues>
 [link:cc-require repo]: <https://bitbucket.org/openshell/cc-require>
 [link:cc-require commits]: <https://bitbucket.org/openshell/cc-require/commits/all>
+[link:cc-require downloads]: <https://bitbucket.org/openshell/cc-require/downloads>
 
 [link:cc-require require.lua]: <https://bitbucket.org/openshell/cc-require/src/default/assets/computercraft/lua/rom/autorun/require.lua?at=default>
