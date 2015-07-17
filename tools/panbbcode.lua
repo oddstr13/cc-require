@@ -3,6 +3,8 @@
 -- Licensed under the GNU General Public License v3 or later.
 -- Written for Lua 5.{1,2}
 
+-- Modified by Odd Stråbø to output bbcode suited for the ComputerCraft forums
+
 -- PRIVATE
 
 local function enclose(t, s, p)
@@ -164,7 +166,7 @@ function CaptionedImage(src, attr, title)
 end
 
 function Code(s, attr)
-  return string.format("[code]%s[/code]", s)
+  return string.format("[font=courier new,courier,monospace]%s[/font]", s)
 end
 
 function InlineMath(s)
@@ -194,11 +196,13 @@ end
 
 function Header(level, s, attr)
   if level == 1 then
-    return enclose('h', s)
+    return enclose('size', s, 8)
   elseif level == 2 then
-    return enclose('b', enclose('u', s))
+    return enclose('size', s, 7)
+  elseif level == 3 then
+    return enclose('size', s, 6)
   else
-    return enclose('b', s)
+    return enclose('b', s, 5)
   end
 end
 
@@ -230,7 +234,7 @@ end
 local function makelist(items, ltype)
   local buf = string.format("[list=%s]", ltype)
   for _,e in ipairs(items) do
-    buf = buf .. enclose('*', e) .. '\n'
+    buf = buf .. '[*] ' .. e .. '\n'
   end
   buf = buf .. '[/list]'
   return buf
