@@ -15,22 +15,28 @@ BRANCH="$(hg identify -b)"
 rm -rv "${BUILDDIR}"
 
 
-OUTPUT="${BUILDDIR}/${NAME}_${BRANCH}_${VERSION}.zip"
+OUTPUT="${BUILDDIR}/${NAME}_${BRANCH}_${VERSION}"
+
+
+mkdir -p "${BUILDDIR}"
+
+# Docs
+pandoc -f markdown_github README.md -t html5 > "${BUILDDIR}/readme.html"
+pandoc -f markdown_github README.md -t tools/panbbcode.lua > "${BUILDDIR}/readme.bbcode"
 
 # Build
 if [ -n "$(which 7z)" ]; then
-    7z a "${OUTPUT}" pack.mcmeta pack.png assets/
+    7z a "${OUTPUT}.zip" pack.mcmeta pack.png assets/
     exit 0
 fi
 
 if [ -n "$(which 7zr)" ]; then
-    7zr a "${OUTPUT}" pack.mcmeta pack.png assets/
+    7zr a "${OUTPUT}.zip" pack.mcmeta pack.png assets/
     exit 0
 fi
 
 if [ -n "$(which zip)" ]; then
     mkdir -p $(dirname "${OUTPUT}")
-    zip -r "${OUTPUT}" pack.mcmeta pack.png assets/
+    zip -r "${OUTPUT}.zip" pack.mcmeta pack.png assets/
     exit 0
 fi
-
