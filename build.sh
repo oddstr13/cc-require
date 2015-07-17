@@ -21,8 +21,9 @@ OUTPUT="${BUILDDIR}/${NAME}_${BRANCH}_${VERSION}"
 mkdir -p "${BUILDDIR}"
 
 # Docs
-pandoc -f markdown_github README.md -t html5 -o "${BUILDDIR}/readme.html"
-pandoc -f markdown_github README.md -t tools/panbbcode.lua -o "${BUILDDIR}/readme.bbcode"
+pandoc -f markdown_github README.md -t html5 -o "${OUTPUT}.html"
+pandoc -f markdown_github README.md -t tools/panbbcode.lua -o "${OUTPUT}.bbcode"
+pandoc -f markdown_github README.md -t latex -o  "${OUTPUT}.pdf"
 
 # Build
 if [ -n "$(which 7z)" ]; then
