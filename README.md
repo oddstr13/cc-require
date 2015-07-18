@@ -72,4 +72,4 @@ Put the downloaded zip into the directory `resourcepacks/`, innside your minecra
 [link:cc-require commits]: <https://bitbucket.org/openshell/cc-require/commits/all>
 [link:cc-require downloads]: <https://bitbucket.org/openshell/cc-require/downloads>
 
-[link:cc-require require.lua]: <https://bitbucket.org/openshell/cc-require/src/default/assets/computercraft/lua/rom/autorun/require.lua?at=default>
+[link:cc-require require.lua]: <https://bitbucket.org/openshell/cc-require/src/default/assets/computercraft/lua/rom/autorun/require.lua>
