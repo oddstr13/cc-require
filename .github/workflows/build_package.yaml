@@ -24,7 +24,7 @@ jobs:
 
           VERSION=$(git describe --tags --always)
           BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-          BUILDDIR="$PWD/build"
+          BUILDDIR="./build"
 
           mkdir -p "${BUILDDIR}"
 
