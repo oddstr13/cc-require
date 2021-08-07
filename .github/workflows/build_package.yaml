@@ -20,8 +20,9 @@ jobs:
         name: Prepare environment
         run: |
           git fetch --tags
+          git tag --list
 
-          VERSION=$(git describe --tags)
+          VERSION=$(git describe --tags --always)
           BRANCH="$(git rev-parse --abbrev-ref HEAD)"
           BUILDDIR="$PWD/build"
 
