@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          # Fetch full repo, not just latest commit
+          fetch-depth: '0'
 
       - id: var
         name: Prepare environment
