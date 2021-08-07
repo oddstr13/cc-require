@@ -26,13 +26,12 @@ jobs:
           git tag --list
 
           VERSION=$(git describe --tags --always)
-          BRANCH="$(git rev-parse --abbrev-ref HEAD)"
           BUILDDIR="./build"
 
           mkdir -p "${BUILDDIR}"
 
           echo "::set-output name=build_dir::${BUILDDIR}"
-          echo "::set-output name=file_prefix::${BUILDDIR}/${APP_NAME}_${BRANCH}_${VERSION}"
+          echo "::set-output name=file_prefix::${BUILDDIR}/${APP_NAME}_${VERSION}"
 
       - name: Render HTML documentation
         uses: docker://pandoc/latex:2.14.1
