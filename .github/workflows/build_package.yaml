@@ -1,0 +1,76 @@
+name: Build
+
+on:
+  push:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    env:
+      APP_NAME: cc-require
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - id: var
+        name: Prepare environment
+        run: |
+          VERSION=$(git describe --tags)
+          BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+          BUILDDIR="$PWD/build"
+
+          mkdir -p "${BUILDDIR}"
+
+          echo "::set-output name=build_dir::${BUILDDIR}"
+          echo "::set-output name=file_prefix::${BUILDDIR}/${APP_NAME}_${BRANCH}_${VERSION}"
+
+      - name: Render HTML documentation
+        uses: docker://pandoc/latex:2.14.1
+        with:
+          args: >-
+            -f markdown
+            README.md
+            -t html5
+            -o "${{ steps.var.outputs.file_prefix }}.html"
+
+      - name: Render BBCODE documentation
+        uses: docker://pandoc/latex:2.14.1
+        with:
+          args: >-
+            -f markdown
+            README.md
+            -t tools/panbbcode.lua
+            -o "${{ steps.var.outputs.file_prefix }}.bbcode"
+
+      - name: Render PDF documentation
+        uses: docker://pandoc/latex:2.14.1
+        with:
+          args: >-
+            -f markdown
+            README.md
+            -t latex
+            -V links-as-notes
+            -V geometry:margin=2cm
+            -V fontsize=12pt
+            -V toc
+            -o "${{ steps.var.outputs.file_prefix }}.pdf"
+
+      - name: Build resource pack
+        run: >-
+          7z a
+          "${{ steps.var.outputs.file_prefix }}.zip"
+          pack.mcmeta
+          pack.png
+          assets/
+
+      - name: Upload GitHub Release Artifacts
+        uses: shogo82148/actions-upload-release-asset@v1
+        if: ${{ github.event_name == 'release' }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: '${{ steps.var.outputs.build_dir }}/*'
+          overwrite: true
