@@ -59,7 +59,7 @@ Contribute
 
 Download and installation
 -------------------------
-Resource pack can be downloaded from the [Bitbucket download section][link:cc-require downloads].
+Resource pack can be downloaded from the [release section][link:cc-require downloads].
 Put the downloaded zip into the directory `resourcepacks/`, innside your minecraft directory, creating it if needed.
 
 
@@ -67,9 +67,9 @@ Put the downloaded zip into the directory `resourcepacks/`, innside your minecra
 [link:5.1 PIL]: <http://www.lua.org/manual/5.1/manual.html>
 [link:5.1 require]: <http://www.lua.org/manual/5.1/manual.html#pdf-require>
 
-[link:cc-require issues]: <https://bitbucket.org/openshell/cc-require/issues>
-[link:cc-require repo]: <https://bitbucket.org/openshell/cc-require>
-[link:cc-require commits]: <https://bitbucket.org/openshell/cc-require/commits/all>
-[link:cc-require downloads]: <https://bitbucket.org/openshell/cc-require/downloads>
+[link:cc-require issues]: <https://github.com/oddstr13/cc-require/issues>
+[link:cc-require repo]: <https://github.com/oddstr13/cc-require>
+[link:cc-require commits]: <https://github.com/oddstr13/cc-require/commits>
+[link:cc-require downloads]: <https://github.com/oddstr13/cc-require/releases>
 
-[link:cc-require require.lua]: <https://bitbucket.org/openshell/cc-require/src/default/assets/computercraft/lua/rom/autorun/require.lua>
+[link:cc-require require.lua]: <https://github.com/oddstr13/cc-require/blob/master/assets/computercraft/lua/rom/autorun/require.lua>

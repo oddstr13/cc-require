@@ -2,14 +2,14 @@
 NAME="cc-require"
 
 if [ -z "${VERSION}" ]; then
-    VERSION=$(printf "%s.%s.%s" "$(tail -n1 .hgtags | cut -d' ' -f2)" "$(hg identify -n)" "$(hg identify -i)")
+    VERSION=$(git describe --tags)
 fi
 
 if [ -z "${BUILDDIR}" ]; then
     BUILDDIR=$(dirname $(realpath $0))/build
 fi
 
-BRANCH="$(hg identify -b)"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
 # Clean up
 rm -rv "${BUILDDIR}"
