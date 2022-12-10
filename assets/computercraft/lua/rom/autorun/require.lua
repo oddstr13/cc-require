@@ -3,6 +3,11 @@
 -- License: MIT - http://opensource.org/licenses/MIT
 -- Filename: require.lua
 
+-- Check if require already exists
+if type(_G.require) == "function" and type(package) == "table" then
+	return nil
+end
+
 _G.package = {}
 
 _G.package.cpath = ""
